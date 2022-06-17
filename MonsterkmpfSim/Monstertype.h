@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EMONSTERTYPE_H
+#define EMONSTERTYPE_H
 
 enum class EMonstertype
 {
@@ -7,3 +8,5 @@ enum class EMonstertype
 	CROC,
 	PIKACHU
 };
+
+#endif //EMONSTERTYPE_H

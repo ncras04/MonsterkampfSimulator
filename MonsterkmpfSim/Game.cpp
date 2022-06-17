@@ -5,8 +5,8 @@ int Game::GameInit()
 	std::cout << "Welcome to Monsterkampf Simulator!";
 	std::cin.get();
 
-	monster_1 = Monster::CreateMonster("erstes");
-	monster_2 = Monster::CreateMonster("zweites");
+	m_monster_1 = Monster::CreateMonster("erstes");
+	m_monster_2 = Monster::CreateMonster("zweites");
 
 	SortBattleOrder();
 
@@ -20,11 +20,11 @@ int Game::GameLoop()
 	do
 	{
 		system("cls");
-		std::cout << "Runde " << ++round;
+		std::cout << "Runde " << ++m_round;
 
-		if (order[activePlayer]->Attack(order[1 - activePlayer]))
+		if (m_battleorder[activePlayer]->Attack(m_battleorder[1 - activePlayer]))
 		{
-			winner = activePlayer;
+			m_winner = activePlayer;
 			break;
 		}
 
@@ -39,23 +39,23 @@ int Game::GameLoop()
 int Game::GameEnd()
 {
 	std::cout << "\n";
-	std::cout << order[winner]->GetName() << " hat innerhalb "
-			<< round << " Runden gewonnen!";
+	std::cout << m_battleorder[m_winner]->GetName() << " hat innerhalb "
+		<< m_round << " Runden gewonnen!";
 
 	return 0;
 }
 
 int Game::SortBattleOrder()
 {
-	if (monster_1->GetSpeed() >= monster_2->GetSpeed())
+	if (m_monster_1->GetSpeed() >= m_monster_2->GetSpeed())
 	{
-		order[0] = monster_1;
-		order[1] = monster_2;
+		m_battleorder[0] = m_monster_1;
+		m_battleorder[1] = m_monster_2;
 	}
 	else
 	{
-		order[0] = monster_2;
-		order[1] = monster_1;
+		m_battleorder[0] = m_monster_2;
+		m_battleorder[1] = m_monster_1;
 	}
 
 	return 0;
@@ -64,17 +64,24 @@ int Game::SortBattleOrder()
 int Game::GetNumberInput(int _min, int _max)
 {
 	int input = 0;
+	std::string strInput;
+	char* p;
 
 	do
 	{
 		std::cout << "\nWaehle eine Nummer zwischen " << _min << " und " << _max << "\n";
+		std::getline(std::cin, strInput);
+		input = strtol(strInput.c_str(), &p, 10);
 
-		std::cin >> input;
-
-		if (input >= _min && input <= _max)
-			return input;
+		if (*p)
+			std::cout << "Deine Eingabe ist keine gueltige Zahl!";
+		else if (input < _min && input > _max)
+			std::cout << "Deine Eingabe ist ungueltig.";
 		else
-			std::cout << "Eingabe ist ungueltig.";
+			return input;
+
 
 	} while (true);
+
+	return 0;
 }

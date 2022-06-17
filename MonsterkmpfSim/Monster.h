@@ -3,6 +3,7 @@
 
 #include "Monstertype.h"
 #include <iostream>
+#include <string>
 #include <memory>
 
 class Monster

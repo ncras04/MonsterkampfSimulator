@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Monster.h"
-#include <string>
 
 std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 {
@@ -25,7 +24,7 @@ std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 	std::cout << "\nWaehle einen SPD Wert:";
 	int spd = Game::GetNumberInput(1, 100);
 
-	std::cout << "\nWaehle eine Monsterrasse aus: \n1 = Tiger, 2 = Bär, 3 = Kroko, 4 = Pikachu";
+	std::cout << "\nWaehle eine Monsterrasse aus: \n1 = Tiger, 2 = Baer, 3 = Kroko, 4 = Pikachu";
 	int monstertype = Game::GetNumberInput(1, 4) - 1;
 	type = (EMonstertype)monstertype;
 
