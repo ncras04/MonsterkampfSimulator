@@ -1,4 +1,3 @@
-#include "Game.h"
 #include "Monster.h"
 
 std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
@@ -8,22 +7,22 @@ std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 	system("cls");
 
 	std::cout << "Waehle einen Namen fuer dein " << _order << " Monster:\n";
-	std::string name = Game::GetStringInput();
+	std::string name = GetStringInput();
 
 	std::cout << "\nWaehle einen HP Wert:";
-	int hp = Game::GetNumberInput(1, 100);
+	int hp = GetNumberInput(1, 100);
 
 	std::cout << "\nWaehle einen ATK Wert:";
-	int atk = Game::GetNumberInput(1, 100);
+	int atk = GetNumberInput(1, 100);
 
 	std::cout << "\nWaehle einen DEF Wert:";
-	int def = Game::GetNumberInput(1, 100);
+	int def = GetNumberInput(1, 100);
 
 	std::cout << "\nWaehle einen SPD Wert:";
-	int spd = Game::GetNumberInput(1, 100);
+	int spd = GetNumberInput(1, 100);
 
 	std::cout << "\nWaehle eine Monsterrasse aus: \n1 = Tiger, 2 = Baer, 3 = Kroko, 4 = Pikachu";
-	int monstertype = Game::GetNumberInput(1, 4) - 1;
+	int monstertype = GetNumberInput(1, 4) - 1;
 	type = (EMonstertype)monstertype;
 
 	return std::make_shared<Monster>(name, hp, atk, def, spd, type);

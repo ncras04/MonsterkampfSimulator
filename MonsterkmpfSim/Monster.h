@@ -1,10 +1,8 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
+#include "SafeInputChecks.h"
 #include "Monstertype.h"
-#include <iostream>
-#include <string>
-#include <memory>
 
 class Monster
 {
