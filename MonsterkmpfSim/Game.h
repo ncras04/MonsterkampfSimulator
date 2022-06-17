@@ -21,6 +21,7 @@ public:
 	int SortBattleOrder();
 
 	static int GetNumberInput(int _min, int _max);
+	static std::string GetStringInput();
 
 };
 

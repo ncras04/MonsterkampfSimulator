@@ -20,7 +20,10 @@ int Game::GameLoop()
 	do
 	{
 		system("cls");
-		std::cout << "Runde " << ++m_round;
+		std::cout << "< Runde " << ++m_round << " >\n";
+		std::cout << m_monster_1->GetName() << ": " << m_monster_1->GetHealth() << " HP\n";
+		std::cout << m_monster_2->GetName() << ": " << m_monster_2->GetHealth() << " HP\n";
+
 
 		if (m_battleorder[activePlayer]->Attack(m_battleorder[1 - activePlayer]))
 		{
@@ -63,7 +66,7 @@ int Game::SortBattleOrder()
 
 int Game::GetNumberInput(int _min, int _max)
 {
-	int input = 0;
+	int input;
 	std::string strInput;
 	char* p;
 
@@ -75,7 +78,7 @@ int Game::GetNumberInput(int _min, int _max)
 
 		if (*p)
 			std::cout << "Deine Eingabe ist keine gueltige Zahl!";
-		else if (input < _min && input > _max)
+		else if (input < _min || input > _max)
 			std::cout << "Deine Eingabe ist ungueltig.";
 		else
 			return input;
@@ -84,4 +87,20 @@ int Game::GetNumberInput(int _min, int _max)
 	} while (true);
 
 	return 0;
+}
+
+std::string Game::GetStringInput()
+{
+	std::string _input;
+
+	std::getline(std::cin, _input);
+
+	while (_input == "")
+	{
+		std::cout << "Deine Eingabe ist ungueltig.\n";
+		std::cout << "Bitte gib einen gueltigen Namen ein:\n";
+		std::getline(std::cin, _input);
+	}
+
+	return _input;
 }

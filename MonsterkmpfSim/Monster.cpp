@@ -3,15 +3,13 @@
 
 std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 {
-	std::string name;
 	EMonstertype type;
 
 	system("cls");
 
 	std::cout << "Waehle einen Namen fuer dein " << _order << " Monster:\n";
-	std::getline(std::cin, name);
+	std::string name = Game::GetStringInput();
 
-	
 	std::cout << "\nWaehle einen HP Wert:";
 	int hp = Game::GetNumberInput(1, 100);
 
@@ -28,7 +26,6 @@ std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 	int monstertype = Game::GetNumberInput(1, 4) - 1;
 	type = (EMonstertype)monstertype;
 
-	std::cin.get();
 	return std::make_shared<Monster>(name, hp, atk, def, spd, type);
 }
 
