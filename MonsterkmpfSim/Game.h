@@ -18,7 +18,15 @@ public:
 	int GameLoop();
 	int GameEnd();
 
+private:
+
 	int SortBattleOrder();
+
+	inline bool CheckDrawPossibility()
+	{
+		return (m_monster_1->GetAttack() <= m_monster_2->GetDefense() &&
+				m_monster_2->GetAttack() <= m_monster_1->GetDefense());
+	}
 };
 
 
