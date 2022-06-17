@@ -2,26 +2,22 @@
 
 int Game::GameInit()
 {
-
 		std::cout << "Welcome to Monsterkampf Simulator!";
 		std::cin.get();
 
-	do
-	{
 		m_monster_1 = Monster::CreateMonster("erstes");
 		m_monster_2 = Monster::CreateMonster("zweites");
 
-		if (CheckDrawPossibility())
+		while (CheckDrawPossibility())
 		{
-			std::cout << "Das Spiel wird in einem Unentschieden enden,"
+			std::cout << "\nDas Spiel wird in einem Unentschieden enden,"
 				"da beide Monster gleich stark sind.";
 			std::cin.get();
 			system("cls");
-		}
-		else
-			break;
 
-	} while (true);
+			m_monster_1 = Monster::CreateMonster("erstes");
+			m_monster_2 = Monster::CreateMonster("zweites");
+		}
 
 	SortBattleOrder();
 
