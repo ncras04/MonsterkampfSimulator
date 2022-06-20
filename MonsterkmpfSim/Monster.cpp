@@ -4,7 +4,7 @@ std::shared_ptr<Monster> Monster::CreateMonster(std::string _order)
 {
 	EMonstertype type;
 
-	system("cls");
+	system("cls");		// Bereinigt die Konsolenansicht (vgl. Console.Clear())"
 
 	std::cout << "Waehle einen Namen fuer dein " << _order << " Monster:\n";
 	std::string name = GetStringInput();
