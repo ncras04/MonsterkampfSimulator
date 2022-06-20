@@ -34,8 +34,10 @@ public:
 
 	inline void SetDamage(int _damage) { m_health -= _damage; }
 
-	static std::shared_ptr<Monster> CreateMonster(std::string _order);		// Beinhaltet alles, was wir für unsere Monstererstellung
-																			// benötigen und gibt den Pointer zurück
+	static std::shared_ptr<Monster> CreateMonster(std::string _order);
+	/* Beinhaltet alles, was wir für unsere Monstererstellung
+	benötigen und gibt den Pointer zurück*/
+
 	Monster(std::string _name, int _hp, int _atk, int _def, int _spd, EMonstertype _type);
 
 	bool Attack(const std::shared_ptr<Monster>& _defender);		// Const, damit in der Methode der Pointer zum Monster nicht verändert wird
